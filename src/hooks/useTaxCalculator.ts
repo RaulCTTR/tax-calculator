@@ -87,6 +87,7 @@ export function useTaxCalculator(): UseTaxCalculationHook {
       setLoading(false);
     } catch (error) {
       console.error(error);
+      setLoading(false);
       setError(error as Error);
     }
   }
