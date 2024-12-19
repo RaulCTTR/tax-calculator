@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -30,10 +30,14 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
     defaultValues: { annualIncom: 0, taxYear: new Date().getFullYear() },
   });
 
-  const onSubmitForm = handleSubmit(onSubmit);
+  const onSubmitForm: SubmitHandler<TaxFormValues> = (data) => {
+    console.log(data);
+    onSubmit(data);
+  };
 
+  console.log("[errors]", errors);
   return (
-    <form onSubmit={onSubmitForm}>
+    <form onSubmit={handleSubmit(onSubmitForm)}>
       <div>
         <input
           {...register("annualIncom", { valueAsNumber: true })}
