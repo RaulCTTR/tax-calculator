@@ -4,8 +4,12 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import TaxForm from "@components/TaxForm";
 
+import { useTaxCalculator } from "@hooks/useTaxCalculator";
+
 function App() {
   const [count, setCount] = useState(0);
+  const { totalTax, taxPerBracket, effectiveRate, calculateTax } =
+    useTaxCalculator();
 
   return (
     <>
@@ -29,7 +33,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <TaxForm onSubmit={(val) => console.log(val)} loading={false} />
+      <TaxForm onSubmit={calculateTax} loading={false} />
     </>
   );
 }

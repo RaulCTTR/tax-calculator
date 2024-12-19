@@ -1,4 +1,5 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import { useState } from "react";
 
 import axios, { AxiosError } from "axios";
 
@@ -10,19 +11,28 @@ interface ApiResponse<T> {
   message?: string;
 }
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: env.API_URL,
 });
 
-export function useApi<TData = unknown, TError = AxiosError>(
+export function useLazyApi<TData = unknown, TError = AxiosError>(
   endpoint: string,
   queryKey: string[]
-): UseQueryResult<TData, TError> {
-  return useQuery<TData, TError>({
+): [() => void, UseQueryResult<TData, TError>] {
+  const [enabled, setEnabled] = useState(false);
+
+  const query = useQuery<TData, TError>({
     queryKey,
     queryFn: async () => {
       const { data } = await api.get<ApiResponse<TData>>(endpoint);
       return data.data;
     },
+    enabled,
   });
+
+  const execute = () => {
+    setEnabled(true);
+  };
+
+  return [execute, query];
 }
