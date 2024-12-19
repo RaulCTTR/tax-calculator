@@ -2,6 +2,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import AlertMessage from "@components/AlertMessage";
+
+const AlertError = AlertMessage.Error;
+
 const taxFormSchema = z.object({
   annualIncom: z
     .number()
@@ -42,7 +46,7 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
           type="number"
           placeholder="Annual Income"
         />
-        {errors.annualIncom && <span>{errors.annualIncom.message}</span>}
+        <AlertError message={errors.annualIncom?.message} />
       </div>
 
       <div>
@@ -51,7 +55,7 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
           type="number"
           placeholder="Tax year"
         />
-        {errors.taxYear && <span>{errors.taxYear.message}</span>}
+        <AlertError message={errors.taxYear?.message} />
       </div>
 
       <button type="submit" disabled={loading}>
