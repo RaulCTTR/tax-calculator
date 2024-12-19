@@ -31,11 +31,9 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
   });
 
   const onSubmitForm: SubmitHandler<TaxFormValues> = (data) => {
-    console.log(data);
     onSubmit(data);
   };
 
-  console.log("[errors]", errors);
   return (
     <form onSubmit={handleSubmit(onSubmitForm)}>
       <div>
