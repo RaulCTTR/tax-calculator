@@ -78,13 +78,23 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
       >
         <div className="tax-form--input-group">
           <label htmlFor="year">{STRINGS_DICTIONARY.LABELS.TOTAL_TAX}</label>
-          <input
+          {/* <input
             id="year"
             {...register("taxYear", { valueAsNumber: true })}
             type="number"
             placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.TAX_YEAR}
             disabled={loading}
-          />
+          /> */}
+          <select
+            id="year"
+            {...register("taxYear", { valueAsNumber: true })}
+            disabled={loading}
+          >
+            <option value={2022}>2022</option>
+            <option value={2021}>2021</option>
+            <option value={2020}>2020</option>
+            <option value={2019}>2019</option>
+          </select>
           <AlertError message={errors.taxYear?.message} />
         </div>
       </div>

@@ -30,7 +30,11 @@ function App() {
           effectiveRate={effectiveRate}
         />
 
-        <ErrorMessage message={ERRORS_DICTIONARY[error?.message]} />
+        <ErrorMessage
+          message={
+            ERRORS_DICTIONARY[error?.message as keyof typeof ERRORS_DICTIONARY]
+          }
+        />
       </section>
     </div>
   );
