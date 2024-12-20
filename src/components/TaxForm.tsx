@@ -4,17 +4,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import AlertMessage from "@components/AlertMessage";
 
+import { STRINGS_DICTIONARY } from "@utils/strings";
+
 const AlertError = AlertMessage.Error;
 
 const taxFormSchema = z.object({
   annualIncom: z
     .number()
-    .min(0, "Annual income must be a positive number")
-    .max(99999999999999, "Annual income is too large"),
+    .min(0, STRINGS_DICTIONARY.ERRORS.ANNUAL_INCOME_NEGATIVE)
+    .max(99999999999999, STRINGS_DICTIONARY.ERRORS.ANNUAL_INCOME_LARGE),
   taxYear: z
     .number()
-    .min(1900, "Tax year must be after 1900")
-    .max(new Date().getFullYear() + 1, "Tax year cannot be in the future"),
+    .min(1900, STRINGS_DICTIONARY.ERRORS.TAX_YEAR_LOWER)
+    .max(
+      new Date().getFullYear() + 1,
+      STRINGS_DICTIONARY.ERRORS.TAX_YEAR_LARGE
+    ),
 });
 
 type TaxFormValues = z.infer<typeof taxFormSchema>;
@@ -44,7 +49,7 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
         <input
           {...register("annualIncom", { valueAsNumber: true })}
           type="number"
-          placeholder="Annual Income"
+          placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.ANNUAL_INCOME}
         />
         <AlertError message={errors.annualIncom?.message} />
       </div>
@@ -53,13 +58,13 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
         <input
           {...register("taxYear", { valueAsNumber: true })}
           type="number"
-          placeholder="Tax year"
+          placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.TAX_YEAR}
         />
         <AlertError message={errors.taxYear?.message} />
       </div>
 
       <button type="submit" disabled={loading}>
-        Calculate
+        {STRINGS_DICTIONARY.BUTTONS.CALCULATE}
       </button>
     </form>
   );
