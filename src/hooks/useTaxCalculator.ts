@@ -11,13 +11,15 @@ interface TaxBracketsResponse {
   tax_brackets: TaxBracket[];
 }
 
+export interface TaxPerBracket {
+  bracket: TaxBracket;
+  taxAmount: number;
+  incomeBracket: number;
+}
+
 interface TaxCalculation {
   totalTax: number;
-  taxPerBracket: {
-    bracket: TaxBracket;
-    taxAmount: number;
-    incomeBracket: number;
-  }[];
+  taxPerBracket: TaxPerBracket[];
   effectiveRate: number;
 }
 
