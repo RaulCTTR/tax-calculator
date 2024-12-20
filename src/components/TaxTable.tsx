@@ -1,10 +1,15 @@
 import "./TaxTable.style.css";
 
 import type { TaxPerBracket } from "@hooks/useTaxCalculator";
+import { STRINGS_DICTIONARY } from "@utils/strings";
 
 interface TaxTableProps {
   taxes: TaxPerBracket[];
 }
+
+const {
+  LABELS: { MIN, MAX, RATE, TAX_AMOUNT, INCOME },
+} = STRINGS_DICTIONARY;
 
 function TaxTableRows({
   taxesRaw,
@@ -29,11 +34,11 @@ function TaxTable({ taxes }: TaxTableProps): JSX.Element {
     <table className="tax-table">
       <thead>
         <tr>
-          <th>Min</th>
-          <th>Max</th>
-          <th>Rate</th>
-          <th>Tax Amount</th>
-          <th>Income</th>
+          <th>{MIN}</th>
+          <th>{MAX}</th>
+          <th>{RATE}</th>
+          <th>{TAX_AMOUNT}</th>
+          <th>{INCOME}</th>
         </tr>
       </thead>
       <tbody>

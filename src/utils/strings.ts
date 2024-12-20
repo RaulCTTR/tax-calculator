@@ -12,4 +12,17 @@ export const STRINGS_DICTIONARY = {
     ANNUAL_INCOME: "Annual income is too large",
     TAX_YEAR: "Tax year",
   },
+  TEXTS: {
+    CALCULATE_TAXES: "Calculate your taxes",
+  },
+  LABELS: {
+    ANNUAL_INCOME: "Annual Income",
+    TOTAL_TAX: "Total Tax",
+    EFFECTIVE_RATE: "Effective rate",
+    MIN: "Min",
+    MAX: "Max",
+    RATE: "Rate",
+    TAX_AMOUNT: "Tax Amount",
+    INCOME: "Income",
+  },
 } as const;

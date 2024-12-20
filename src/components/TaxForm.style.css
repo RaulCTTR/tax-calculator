@@ -60,3 +60,9 @@ input:focus {
 .tax-form--submit-button:hover {
   background-color: #357abd;
 }
+
+.tax-form--submit-button:disabled {
+  background: #f8f9fa;
+  color: #333;
+  cursor: auto;
+}

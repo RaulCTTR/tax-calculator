@@ -8,7 +8,7 @@ type AlertMessageComponents = {
 };
 
 function Error({ message }: AlertMessageProps): JSX.Element | null {
-  return (message && <span>{message}</span>) || null;
+  return (message && <div>{message}</div>) || null;
 }
 
 function Success({ message }: AlertMessageProps): JSX.Element | null {

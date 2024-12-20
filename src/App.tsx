@@ -5,14 +5,15 @@ import TaxDetails from "@components/TaxDetails";
 import { useTaxCalculator } from "@hooks/useTaxCalculator";
 
 function App() {
-  const { totalTax, taxPerBracket, effectiveRate, calculateTax } =
+  const { totalTax, taxPerBracket, effectiveRate, calculateTax, loading } =
     useTaxCalculator();
 
   return (
     <div className="tax-app">
       <section className="tax-section">
-        <TaxForm onSubmit={calculateTax} loading={false} />
+        <TaxForm onSubmit={calculateTax} loading={loading} />
         <TaxDetails
+          loading={loading}
           taxes={taxPerBracket || []}
           totalTax={totalTax}
           effectiveRate={effectiveRate}
