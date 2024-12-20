@@ -1,3 +1,5 @@
+import "./TaxDetails.style.css";
+
 import TaxTable from "@components/TaxTable";
 import type { TaxPerBracket } from "@hooks/useTaxCalculator";
 
@@ -13,20 +15,22 @@ function TaxDetails({
   taxes,
 }: TaxDetailsProps): JSX.Element {
   return (
-    <section>
-      <div>
-        <div>
-          <span>Total Tax</span>
-          <p>{totalTax}</p>
+    <section className="tax-details">
+      <div className="tax-details--wrap">
+        <div className="tax-details--result">
+          <h2>Total Tax</h2>
+          <p className="tax-details--amount">${totalTax}</p>
         </div>
 
-        <div>
-          <span>Effective rate</span>
-          <p>{effectiveRate}</p>
+        <div className="tax-details--result">
+          <h2>Effective rate</h2>
+          <p className="tax-details--amount">{effectiveRate}%</p>
         </div>
       </div>
 
-      <TaxTable taxes={taxes} />
+      <div className="tax-details--result">
+        <TaxTable taxes={taxes} />
+      </div>
     </section>
   );
 }

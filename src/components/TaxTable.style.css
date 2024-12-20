@@ -1,0 +1,28 @@
+.tax-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.tax-table thead tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.tax-table th {
+  padding: 0.75rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.tax-table td {
+  padding: 0.75rem;
+}
+
+.tax-table tbody tr:nth-child(even) {
+  background-color: #f1f3f5;
+}
+
+.tax-table tbody tr:hover {
+  background-color: #e9ecef;
+}

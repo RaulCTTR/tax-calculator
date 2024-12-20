@@ -1,0 +1,62 @@
+.tax-form {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: flex-end;
+}
+
+.tax-form--input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tax-form--currency-input {
+  position: relative;
+}
+
+.tax-form--currency-symbol {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.tax-form--input-group label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  padding-left: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.tax-form--submit-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tax-form--submit-button:hover {
+  background-color: #357abd;
+}

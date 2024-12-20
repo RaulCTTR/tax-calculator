@@ -1,3 +1,5 @@
+import "./TaxTable.style.css";
+
 import type { TaxPerBracket } from "@hooks/useTaxCalculator";
 
 interface TaxTableProps {
@@ -24,7 +26,7 @@ function TaxTableRows({
 
 function TaxTable({ taxes }: TaxTableProps): JSX.Element {
   return (
-    <table>
+    <table className="tax-table">
       <thead>
         <tr>
           <th>Min</th>

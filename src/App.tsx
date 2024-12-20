@@ -9,14 +9,16 @@ function App() {
     useTaxCalculator();
 
   return (
-    <>
-      <TaxForm onSubmit={calculateTax} loading={false} />
-      <TaxDetails
-        taxes={taxPerBracket || []}
-        totalTax={totalTax}
-        effectiveRate={effectiveRate}
-      />
-    </>
+    <div className="tax-app">
+      <section className="tax-section">
+        <TaxForm onSubmit={calculateTax} loading={false} />
+        <TaxDetails
+          taxes={taxPerBracket || []}
+          totalTax={totalTax}
+          effectiveRate={effectiveRate}
+        />
+      </section>
+    </div>
   );
 }
 

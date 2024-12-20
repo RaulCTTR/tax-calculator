@@ -1,3 +1,5 @@
+import "./TaxForm.style.css";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,18 +46,26 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmitForm)}>
-      <div>
-        <input
-          {...register("annualIncom", { valueAsNumber: true })}
-          type="number"
-          placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.ANNUAL_INCOME}
-        />
+    <form className="tax-form" onSubmit={handleSubmit(onSubmitForm)}>
+      <div className="tax-form--input-group">
+        <label htmlFor="income">Annual Income</label>
+        <div className="tax-form--currency-input">
+          <span className="tax-form--currency-symbol">$</span>
+          <input
+            id="income"
+            {...register("annualIncom", { valueAsNumber: true })}
+            type="number"
+            placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.ANNUAL_INCOME}
+          />
+        </div>
+
         <AlertError message={errors.annualIncom?.message} />
       </div>
 
-      <div>
+      <div className="tax-form--input-group">
+        <label htmlFor="year">Total Tax</label>
         <input
+          id="year"
           {...register("taxYear", { valueAsNumber: true })}
           type="number"
           placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.TAX_YEAR}
@@ -63,7 +73,11 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
         <AlertError message={errors.taxYear?.message} />
       </div>
 
-      <button type="submit" disabled={loading}>
+      <button
+        type="submit"
+        disabled={loading}
+        className="tax-form--submit-button"
+      >
         {STRINGS_DICTIONARY.BUTTONS.CALCULATE}
       </button>
     </form>
