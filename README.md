@@ -1,5 +1,7 @@
 # Tax Calculator
 
+![app preview](./repo-assets/app-preview.png)
+
 The purpose of this project is help yoou with the calculus of your taxes, you only need you annual income and select the year wou want to calculate your taxes and this app will do all the hard work.
 
 ## Previuos requirements
