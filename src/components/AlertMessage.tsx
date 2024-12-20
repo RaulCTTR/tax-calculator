@@ -1,3 +1,5 @@
+import "./AlertMessage.style.css";
+
 interface AlertMessageProps {
   message?: string;
 }
@@ -8,7 +10,7 @@ type AlertMessageComponents = {
 };
 
 function Error({ message }: AlertMessageProps): JSX.Element | null {
-  return (message && <div>{message}</div>) || null;
+  return (message && <span className="alert-error">{message}</span>) || null;
 }
 
 function Success({ message }: AlertMessageProps): JSX.Element | null {

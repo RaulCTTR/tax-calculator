@@ -48,42 +48,56 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
   return (
     <form className="tax-form" onSubmit={handleSubmit(onSubmitForm)}>
       <div className="tax-form--input-group">
-        <label htmlFor="income">
-          {STRINGS_DICTIONARY.LABELS.ANNUAL_INCOME}
-        </label>
-        <div className="tax-form--currency-input">
-          <span className="tax-form--currency-symbol">$</span>
+        <div
+          className={`tax-form--input-wrapper ${
+            errors.annualIncom?.message ? "tax-form--error" : ""
+          }`}
+        >
+          <label htmlFor="income">
+            {STRINGS_DICTIONARY.LABELS.ANNUAL_INCOME}
+          </label>
+          <div className="tax-form--currency-input">
+            <span className="tax-form--currency-symbol">$</span>
+            <input
+              id="income"
+              {...register("annualIncom", { valueAsNumber: true })}
+              type="number"
+              placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.ANNUAL_INCOME}
+              disabled={loading}
+            />
+          </div>
+
+          <AlertError message={errors.annualIncom?.message} />
+        </div>
+      </div>
+
+      <div
+        className={`tax-form--input-wrapper ${
+          errors.taxYear?.message ? "tax-form--error" : ""
+        }`}
+      >
+        <div className="tax-form--input-group">
+          <label htmlFor="year">{STRINGS_DICTIONARY.LABELS.TOTAL_TAX}</label>
           <input
-            id="income"
-            {...register("annualIncom", { valueAsNumber: true })}
+            id="year"
+            {...register("taxYear", { valueAsNumber: true })}
             type="number"
-            placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.ANNUAL_INCOME}
+            placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.TAX_YEAR}
             disabled={loading}
           />
+          <AlertError message={errors.taxYear?.message} />
         </div>
-
-        <AlertError message={errors.annualIncom?.message} />
       </div>
 
-      <div className="tax-form--input-group">
-        <label htmlFor="year">{STRINGS_DICTIONARY.LABELS.TOTAL_TAX}</label>
-        <input
-          id="year"
-          {...register("taxYear", { valueAsNumber: true })}
-          type="number"
-          placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.TAX_YEAR}
+      <div className="tax-form--button-container">
+        <button
+          type="submit"
           disabled={loading}
-        />
-        <AlertError message={errors.taxYear?.message} />
+          className="tax-form--submit-button"
+        >
+          {STRINGS_DICTIONARY.BUTTONS.CALCULATE}
+        </button>
       </div>
-
-      <button
-        type="submit"
-        disabled={loading}
-        className="tax-form--submit-button"
-      >
-        {STRINGS_DICTIONARY.BUTTONS.CALCULATE}
-      </button>
     </form>
   );
 }

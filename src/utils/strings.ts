@@ -9,7 +9,7 @@ export const STRINGS_DICTIONARY = {
     TAX_YEAR_LARGE: "Tax year cannot be in the future",
   },
   PLACE_HOLDERS: {
-    ANNUAL_INCOME: "Annual income is too large",
+    ANNUAL_INCOME: "Annual Income",
     TAX_YEAR: "Tax year",
   },
   TEXTS: {

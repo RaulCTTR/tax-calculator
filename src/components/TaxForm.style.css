@@ -1,12 +1,24 @@
 .tax-form {
   display: flex;
-  flex-wrap: nowrap;
   gap: 1rem;
-  margin-bottom: 2rem;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .tax-form--input-group {
+  display: flex;
+  flex-direction: column;
+  min-height: 85px;
+}
+
+.tax-form--input-group:first-child {
+  flex: 2;
+}
+
+.tax-form--currency-input:nth-child(2) {
+  flex: 1;
+}
+
+.tax-form--input-wrapper {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -46,6 +58,12 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
+.tax-form--button-container {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  margin-top: 24px;
+}
+
 .tax-form--submit-button {
   background-color: #4a90e2;
   color: white;
@@ -65,4 +83,12 @@ input:focus {
   background: #f8f9fa;
   color: #333;
   cursor: auto;
+}
+
+.tax-form--error label {
+  color: #dc3545;
+}
+
+.tax-form--error input {
+  border: 1px solid  #dc3545;
 }
