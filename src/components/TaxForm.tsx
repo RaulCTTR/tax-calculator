@@ -5,21 +5,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import AlertMessage from "@components/AlertMessage";
 
 import { STRINGS_DICTIONARY } from "@utils/strings";
+import { APP_CONSTS } from "@utils/consts";
 
 const AlertError = AlertMessage.Error;
+const { ANNUAL_INCOME_MIN, ANNUAL_INCOME_MAX, TAX_YEAR_MIN, TAX_YEAR_MAX } =
+  APP_CONSTS;
 
 const taxFormSchema = z.object({
   annualIncom: z
     .number()
-    .min(0, STRINGS_DICTIONARY.ERRORS.ANNUAL_INCOME_NEGATIVE)
-    .max(99999999999999, STRINGS_DICTIONARY.ERRORS.ANNUAL_INCOME_LARGE),
+    .min(ANNUAL_INCOME_MIN, STRINGS_DICTIONARY.ERRORS.ANNUAL_INCOME_NEGATIVE)
+    .max(ANNUAL_INCOME_MAX, STRINGS_DICTIONARY.ERRORS.ANNUAL_INCOME_LARGE),
   taxYear: z
     .number()
-    .min(1900, STRINGS_DICTIONARY.ERRORS.TAX_YEAR_LOWER)
-    .max(
-      new Date().getFullYear() + 1,
-      STRINGS_DICTIONARY.ERRORS.TAX_YEAR_LARGE
-    ),
+    .min(TAX_YEAR_MIN, STRINGS_DICTIONARY.ERRORS.TAX_YEAR_LOWER)
+    .max(TAX_YEAR_MAX, STRINGS_DICTIONARY.ERRORS.TAX_YEAR_LARGE),
 });
 
 type TaxFormValues = z.infer<typeof taxFormSchema>;

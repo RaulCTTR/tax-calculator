@@ -1,0 +1,6 @@
+export enum APP_CONSTS {
+  ANNUAL_INCOME_MIN = 0,
+  ANNUAL_INCOME_MAX = 99999999999999,
+  TAX_YEAR_MIN = 1900,
+  TAX_YEAR_MAX = new Date().getFullYear() + 1,
+}
