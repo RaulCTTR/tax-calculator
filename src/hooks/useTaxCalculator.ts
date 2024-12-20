@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { api } from "@hooks/useLazyApi";
+import { STRINGS_DICTIONARY } from "@utils/strings";
 
 interface TaxBracket {
   min: number;
@@ -51,6 +52,12 @@ export function useTaxCalculator(): UseTaxCalculationHook {
   }) {
     try {
       setLoading(true);
+      setError(null);
+
+      if (annualIncom <= 0) {
+        throw new Error(STRINGS_DICTIONARY.ERRORS.ANNUAL_INCOME_NEGATIVE);
+      }
+
       const response = await api.get<TaxBracketsResponse>(
         `/tax-calculator/tax-year/${taxYear}`
       );
@@ -91,6 +98,7 @@ export function useTaxCalculator(): UseTaxCalculationHook {
       console.error(error);
       setLoading(false);
       setError(error as Error);
+      setTaxCalculation(null);
     }
   }
 

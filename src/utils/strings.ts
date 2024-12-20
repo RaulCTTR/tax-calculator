@@ -1,3 +1,10 @@
+export const ERRORS_DICTIONARY = {
+  "Network Error": "Server is down, please try again",
+  "Request failed with status code 500": "Cannot calculate taxes for that year",
+  "Annual income must be a positive number":
+    "Annual income must be a positive number",
+} as const;
+
 export const STRINGS_DICTIONARY = {
   BUTTONS: {
     CALCULATE: "Calculate",
