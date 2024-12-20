@@ -59,6 +59,7 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
           <div className="tax-form--currency-input">
             <span className="tax-form--currency-symbol">$</span>
             <input
+              data-testid="annualIncom"
               id="income"
               {...register("annualIncom", { valueAsNumber: true })}
               type="number"
@@ -78,15 +79,9 @@ function TaxForm({ onSubmit, loading }: TaxFormProps): JSX.Element {
       >
         <div className="tax-form--input-group">
           <label htmlFor="year">{STRINGS_DICTIONARY.LABELS.TOTAL_TAX}</label>
-          {/* <input
-            id="year"
-            {...register("taxYear", { valueAsNumber: true })}
-            type="number"
-            placeholder={STRINGS_DICTIONARY.PLACE_HOLDERS.TAX_YEAR}
-            disabled={loading}
-          /> */}
           <select
             id="year"
+            data-testid="taxYear"
             {...register("taxYear", { valueAsNumber: true })}
             disabled={loading}
           >
