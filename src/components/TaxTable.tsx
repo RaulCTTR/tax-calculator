@@ -2,6 +2,7 @@ import "./TaxTable.style.css";
 
 import type { TaxPerBracket } from "@hooks/useTaxCalculator";
 import { STRINGS_DICTIONARY } from "@utils/strings";
+import { formatMoneyWithCurrency } from "@utils/formats";
 
 interface TaxTableProps {
   taxes: TaxPerBracket[];
@@ -19,11 +20,11 @@ function TaxTableRows({
   return taxesRaw.map(
     ({ bracket: { min, max, rate }, taxAmount, incomeBracket }, index) => (
       <tr key={`TTR_${index}`}>
-        <td>{min}</td>
-        <td>{max}</td>
+        <td>{formatMoneyWithCurrency(min)}</td>
+        <td>{max ? formatMoneyWithCurrency(max) : "-"}</td>
         <td>{rate}</td>
-        <td>{taxAmount}</td>
-        <td>{incomeBracket}</td>
+        <td>{formatMoneyWithCurrency(taxAmount)}</td>
+        <td>{formatMoneyWithCurrency(incomeBracket)}</td>
       </tr>
     )
   );

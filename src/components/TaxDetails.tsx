@@ -5,6 +5,7 @@ import type { TaxPerBracket } from "@hooks/useTaxCalculator";
 import Loading from "@components/Loading";
 
 import { STRINGS_DICTIONARY } from "@utils/strings";
+import { formatMoney } from "@utils/formats";
 
 interface TaxDetailsProps {
   totalTax?: number;
@@ -36,7 +37,9 @@ function TaxDetails({
       <div className="tax-details--wrap">
         <div className="tax-details--result">
           <h2>{STRINGS_DICTIONARY.LABELS.TOTAL_TAX}</h2>
-          <p className="tax-details--amount">${totalTax}</p>
+          <p className="tax-details--amount">
+            ${formatMoney(totalTax as number)}
+          </p>
         </div>
 
         <div className="tax-details--result">
